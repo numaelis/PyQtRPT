@@ -1,4 +1,4 @@
 # PyQtRPT
 Python PySide Shiboken QtRPT 
-Licence compatibles with QtRPT, zint
+License compatibles with QtRPT, zint
 
