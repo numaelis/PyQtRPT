@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<typesystem package="PyQtRPT">
+    <load-typesystem name="typesystem_core.xml" generate="no"/>
+    <load-typesystem name="typesystem_gui.xml" generate="no"/>
+    <namespace-type name="QtRptName">
+        <enum-type name="BandType"/>
+        <enum-type name="FieldType"/>
+	<enum-type name="BorderStyle"/>
+	<enum-type name="Command"/>
+    </namespace-type>
+    <object-type name="QtRPT">
+	<enum-type name="PrintMode"/>
+        <extra-includes>
+             <include file-name="QStringList" location="global"/>
+             <include file-name="QSize" location="global"/>
+        </extra-includes>
+    </object-type>
+    <object-type name="RptSql">
+        <extra-includes>
+             <include file-name="QStringList" location="global"/>
+             <include file-name="QSize" location="global"/>
+        </extra-includes>
+    </object-type>
+    <value-type name="RptSqlConnection"/>
+    <value-type name="RptFieldObject"/>
+    <value-type name="RptBandObject"/>
+    <value-type name="RptPageObject"/>
+</typesystem>
+
+
