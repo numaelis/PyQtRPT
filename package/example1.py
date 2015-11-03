@@ -6,16 +6,21 @@ import PyQtRPT
 
 
 table=[
-	{"NN":"hola",
-	  "Goods":"23",
-	  "Quantity":"tio yuma",
-	  "Price":"23",
-	  "Sum":"23"},
-	{"NN":"23",
-	  "Goods":"23",
-	  "Quantity":"jejeje",
-	  "Price":44,
-	  "Sum":"23"}
+	{"NN":1,
+	  "Goods":"g0",
+	  "Quantity":10,
+	  "Price":100,
+	  "Sum":1000},
+	{"NN":2,
+	  "Goods":"g1",
+	  "Quantity":20,
+	  "Price":200,
+	  "Sum":4000},
+      {"NN":3,
+	  "Goods":"g2",
+	  "Quantity":30,
+	  "Price":300,
+	  "Sum":9000}  
   ]
 paramOne={
         "customer":"jean",
@@ -26,7 +31,7 @@ paramOne={
 #    def __init__(self, parent):
 #        QObject.__init__(self)
 #        self.parent = parent
-#    @QtCore.Slot(int, "QString", "QVariant&", int)#result = int, str, "QVariant", int
+#    @QtCore.Slot(int, "QString", "QVariant&", int)
 #    def setValue(self, recNo, paramName, paramValue, reportPage):
 #        if paramName == "customer":
 #            paramValue = "I Am"
@@ -47,25 +52,38 @@ paramOne={
 #        if paramName == "Sum":
 #           #if (ui->tableWidget->item(recNo,3) == 0) return;
 #            paramValue = table[recNo]["Sum"]
-    
+#    @QtCore.Slot(int, "QString", "QImage&", int)
+#    def setValueImage(self, recNo, paramName, paramValue, reportPage):
+#        print(paramValue)
+#        if paramName=="image":
+#            paramValue.load("examples/pdf.png")
+
+@QtCore.Slot(int, "QString", "QImage&", int)
+def setValueImage(recNo, paramName, paramValue, reportPage):
+    print(paramValue)
+    if paramName=="image":
+        paramValue.load("examples/pdf.png")
+        
 a = QApplication(sys.argv)
 form = QDialog()
-s= PyQtRPT.QtRPT()
-archi=str("example1.xml")
+report= PyQtRPT.QtRPT()
+file=str("examples/examples_report/example1.xml")
 
-s.loadReport(archi)
-aa=QPixmap("qt_background_portrait.png")
-s.setBackgroundImage(aa)
+report.loadReport(file)
+bac=QPixmap("examples/examples_report/qt_background_portrait.png")
+report.setBackgroundImage(bac)
+#add func in qtrpt:
+report.setTableMap(table)
+report.setParamMapOne(paramOne)
+report.recordCount =[len(table)]
 
-s.setTableMap(table)
-s.setParamMapOne(paramOne)
-s.recordCount =[len(table)]
-
-#not works: QVariant&, python None
+#not works: QVariant&, python None 
 #o = myObject(0)
 #QObject.connect(s, SIGNAL("setValue(int, QString, QVariant&, int)"),
 #                o, SLOT("setValue(int, QString, QVariant&, int)"))
+QObject.connect(report, SIGNAL("setValueImage(int, QString, QImage&, int)"),
+                setValueImage)
 
-s.printExec(True)
+report.printExec(True)
 form.show()
 a.exec_()
