@@ -1,7 +1,7 @@
 
-Instructions build:(tested in opensuse, python 3.4, PySide 1.2.2, Qt 4.8.6)
+Instructions build:(tested in opensuse, python 3.4, PySide 1.2.2, Qt 4.8.6, qtRPTProject 1.5.4)
 
-dowload qtRPTProject and copy 	
+download qtRPTProject 1.5.4 and copy 	
   CommonFiles
 	QtRPT
 	zint-2.4.4
@@ -126,12 +126,13 @@ LIBS += /usr/lib/libpython3.4m.so.1.0 \
 
 build:
 sh build.sh
-
+-create 2 lib in package: PyQtRPT.so and libQtZint
 <<<<<<<<<<<<<<<
 install libQtZint in /usr/lib:
 ej: sudo cp -f hybrid/libQtZint.so.1.0.0 /usr/lib/libQtZint.so.1
 
 <<<<<<<<<<<<<<<<
+-copy dir QtRptDemo/examples to package
 example:
 python3 example1.py
 
