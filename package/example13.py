@@ -90,7 +90,7 @@ a = QApplication(sys.argv)
 form = QDialog()
 report= PyQtRPT.QtRPT()
 
-#report.setActivedSignal(True) 
+report.setActivedSignal(True) 
 
 report.recordCount =[3]
 
