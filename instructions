@@ -52,25 +52,40 @@ line 1728:
 <<<<<<<<<<<
 in QtRPT/qtrpt.h
 add in public:
-    void setTableMap(QVariantList &vlist);
-    void setParamMapOne(QVariant &mappo);
+    void setTableMap(QVariantList &vlist, QVariant &mappo);
+    void setActivedSignal(bool &bm);
 add in private:
     QVariantList m_vlist;
-    QVariantMap m_mapParamOne;
+    QVariantMap m_mapOne;
+    bool m_boolActiveSignal;
+replace in signal setValue:
+result:
+    void setValue(const int recNo, const QString paramName, QObject &paramValueO, const int reportPage);
     ------
 in QtRPT/qtrpt.cpp:
 add:
-    void QtRPT::setTableMap(QVariantList &vlist){
-      m_vlist = vlist;
-    }
-    void QtRPT::setParamMapOne(QVariant &mappo)
-    {
-	m_mapParamOne = mappo.toMap();
-    }
+  void QtRPT::setTableMap(QVariantList &vlist, QVariant &mappo){
+    m_vlist = vlist;
+    m_mapOne = mappo.toMap();
+  }
+
+  void QtRPT::setActivedSignal(bool &bm)
+  {
+      if(bm!=m_boolActiveSignal){
+	  m_boolActiveSignal = bm;
+      }
+  }
+  
 in QtRPT/qtrpt.cpp:
-add in QString QtRPT::sectionValue(QString paramName):
+add in QtRPT::QtRPT(QObject *parent): (line 173)
+    m_boolActiveSignal=true;
+    
+in QtRPT/qtrpt.cpp:
+replace and add in QString QtRPT::sectionValue(QString paramName):
 result:
+    QObject paramValueO;
     QVariant paramValue;
+
     paramName.replace("[","");
     paramName.replace("]","");
     //callbackFunc(recNo, paramName, paramValue);
@@ -79,14 +94,44 @@ result:
     //if (!listOfGroup.isEmpty()) //group processing
     //    m_recNo = mg_recNo;
 
-    emit setValue(m_recNo, paramName, paramValue, m_pageReport);
-    if(!m_mapParamOne.contains(paramName)){
-        paramValue = m_vlist.at(m_recNo).toMap().value(paramName);
+    if(m_boolActiveSignal){
+        emit setValue(m_recNo, paramName, paramValueO, m_pageReport);
+        return paramValueO.objectName();// temporary solution pyside
     }else{
-        paramValue = m_mapParamOne.value(paramName);
+        if(m_mapOne.contains(paramName)){
+            paramValue = m_mapOne.value(paramName);
+        }else{
+            if(m_vlist.length()-1 >= m_recNo){
+                if(m_vlist.at(m_recNo).toMap().contains(paramName)){
+                    paramValue = m_vlist.at(m_recNo).toMap().value(paramName);
+                }
+            }
+        }
+        return paramValue.toString();
     }
-    return paramValue.toString();
+    
+in QtRPT/qtrpt.cpp:
+replace and add in QString QtRPT::sectionValueImage(QString paramName):
+result:
+    QImage paramValue;
+    paramName.replace("[","");
+    paramName.replace("]","");
 
+    if(m_boolActiveSignal){
+        emit setValueImage(m_recNo, paramName, paramValue, m_pageReport);
+        return paramValue;
+    }else{
+        if(m_mapOne.contains(paramName)){
+            paramValue.load(m_mapOne.value(paramName).toString());
+        }else{
+            if(m_vlist.length()-1 >= m_recNo){
+                if(m_vlist.at(m_recNo).toMap().contains(paramName)){
+                    paramValue.load(m_vlist.at(m_recNo).toMap().value(paramName).toString());
+                }
+            }
+        }
+        return paramValue;
+    }
 <<<<<<<<<<<<
 <<<<<<<<<<<<<<<
 in CommonFiles/Barcode.cpp changue:
