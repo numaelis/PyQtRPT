@@ -28,7 +28,9 @@ SOURCES += \
     PyQtRPT/rptpageobject_wrapper.cpp \
     PyQtRPT/rptsql_wrapper.cpp \
     PyQtRPT/rptsqlconnection_wrapper.cpp \
-    PyQtRPT/qtrptname_wrapper.cpp
-
-
+    PyQtRPT/qtrptname_wrapper.cpp \
+    PyQtRPT/barcode_wrapper.cpp \
+    PyQtRPT/chart_wrapper.cpp \
+    PyQtRPT/graphparam_wrapper.cpp \
+    PyQtRPT/aggregatevalues_wrapper.cpp
 
