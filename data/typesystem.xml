@@ -8,6 +8,32 @@
 	<enum-type name="BorderStyle"/>
 	<enum-type name="Command"/>
     </namespace-type>
+    <object-type name="BarCode">
+        <enum-type name="BarcodeTypes"/>
+        <enum-type name="FrameTypes"/>
+        <extra-includes>
+             <include file-name="QStringList" location="global"/>
+             <include file-name="QSize" location="global"/>
+        </extra-includes>
+    </object-type>
+    <function signature="double2MoneyUKR(double, int)"/>
+    <function signature="double2MoneyRUS(double, int)"/>
+    <function signature="double2MoneyGER(double, bool)"/>
+    <function signature="double2MoneyENG(double)"/>
+    <function signature="double2Money(double, QString)"/>
+    <function signature="colorToString(QColor)"/>
+    <function signature="colorFromString(QString)"/>
+    <function signature="eventType(QEvent*)"/>
+    <enum-type name="ChartParam"/>
+    <value-type name="GraphParam"/>
+    <object-type name="Chart">
+        <extra-includes>
+             <include file-name="QStringList" location="global"/>
+             <include file-name="QSize" location="global"/>
+        </extra-includes>
+    </object-type>
+    <enum-type name="HiType"/>
+    <value-type name="AggregateValues"/>
     <object-type name="QtRPT">
 	<enum-type name="PrintMode"/>
         <extra-includes>
