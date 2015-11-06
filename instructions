@@ -1,10 +1,13 @@
 
 Instructions build:(tested in opensuse, python 3.4, PySide 1.2.2, Qt 4.8.6, qtRPTProject 1.5.4)
 
-download qtRPTProject 1.5.4 and copy 	
-  CommonFiles
+download qtRPTProject 1.5.4 and 
+   copy in PyQtRPTDir:
+  	CommonFiles
 	QtRPT
 	zint-2.4.4
+   copy in package:
+        QtRptDemo/examples
 	
 final dir:
 PyQtRPTDir/
@@ -17,7 +20,8 @@ PyQtRPTDir/
   |	|-hybridpy.pro
   |-package/
   |	|-example1.py
-  | |-example1.xml -> examples QtRPT
+  |     |-more examples ....
+  |	|-examples/ ---> QtRptDemo/
   |-CommonFiles/
   |-QtRPT/
   |-zint-2.4.4/
@@ -177,7 +181,6 @@ install libQtZint in /usr/lib:
 ej: sudo cp -f hybrid/libQtZint.so.1.0.0 /usr/lib/libQtZint.so.1
 
 <<<<<<<<<<<<<<<<
--copy dir QtRptDemo/examples to package
 example:
 python3 example1.py
 
