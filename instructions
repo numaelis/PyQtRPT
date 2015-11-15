@@ -1,3 +1,4 @@
+// numaelis@gmail.com
 
 Instructions build:(tested in opensuse, python 3.4, PySide 1.2.2, Qt 4.8.6, qtRPTProject 1.5.4)
 
@@ -64,7 +65,7 @@ add in private:
     bool m_boolActiveSignal;
 replace in signal setValue:
 result:
-    void setValue(const int recNo, const QString paramName, QObject &paramValueO, const int reportPage);
+    void setValue(const int recNo, const QString paramName, DataObject &paramValueO, const int reportPage);
     ------
 in QtRPT/qtrpt.cpp:
 add:
@@ -85,9 +86,9 @@ add in QtRPT::QtRPT(QObject *parent): (line 173)
     m_boolActiveSignal=true;
     
 in QtRPT/qtrpt.cpp:
-replace and add in QString QtRPT::sectionValue(QString paramName):
+replace and add, in "QString QtRPT::sectionValue(QString paramName)":
 result:
-    QObject paramValueO;
+    DataObject paramValueO;
     QVariant paramValue;
 
     paramName.replace("[","");
@@ -100,14 +101,16 @@ result:
 
     if(m_boolActiveSignal){
         emit setValue(m_recNo, paramName, paramValueO, m_pageReport);
-        return paramValueO.objectName();// temporary solution pyside
+        return paramValueO.value();// temporary solution pyside
     }else{
         if(m_mapOne.contains(paramName)){
             paramValue = m_mapOne.value(paramName);
         }else{
-            if(m_vlist.length()-1 >= m_recNo){
-                if(m_vlist.at(m_recNo).toMap().contains(paramName)){
-                    paramValue = m_vlist.at(m_recNo).toMap().value(paramName);
+            if(m_vlist.length()-1 >= m_pageReport){
+                if(m_vlist.at(m_pageReport).toList().length()-1 >= m_recNo){
+                    if(m_vlist.at(m_pageReport).toList().at(m_recNo).toMap().contains(paramName)){
+                        paramValue = m_vlist.at(m_pageReport).toList().at(m_recNo).toMap().value(paramName);
+                    }
                 }
             }
         }
@@ -115,7 +118,7 @@ result:
     }
     
 in QtRPT/qtrpt.cpp:
-replace and add in QString QtRPT::sectionValueImage(QString paramName):
+replace and add, in "QString QtRPT::sectionValueImage(QString paramName)":
 result:
     QImage paramValue;
     paramName.replace("[","");
@@ -128,15 +131,62 @@ result:
         if(m_mapOne.contains(paramName)){
             paramValue.load(m_mapOne.value(paramName).toString());
         }else{
-            if(m_vlist.length()-1 >= m_recNo){
-                if(m_vlist.at(m_recNo).toMap().contains(paramName)){
-                    paramValue.load(m_vlist.at(m_recNo).toMap().value(paramName).toString());
+            if(m_vlist.length()-1 >= m_pageReport){
+                if(m_vlist.at(m_pageReport).toList().length()-1 >= m_recNo){
+                    if(m_vlist.at(m_pageReport).toList().at(m_recNo).toMap().contains(paramName)){
+                        paramValue.load(m_vlist.at(m_pageReport).toList().at(m_recNo).toMap().value(paramName).toString());
+                    }
                 }
             }
         }
         return paramValue;
     }
 <<<<<<<<<<<<
+in qtrpt.h add new class (before the class QtRPT):
+    class DataObject : public QObject
+    {
+	Q_OBJECT
+	Q_PROPERTY(QString value READ value WRITE setValue NOTIFY valueChanged)
+
+    public:
+	DataObject(QObject *parent=0);
+	DataObject(const QString &value, QObject *parent=0);
+
+	QString value() const;
+	void setValue(const QString &value);
+
+    signals:
+	void valueChanged();
+
+    private:
+	QString m_value;
+    };
+in qtrpt.cpp add:
+      DataObject::DataObject(QObject *parent)
+	  :QObject(parent)
+      {
+
+      }
+
+      DataObject::DataObject(const QString &value, QObject *parent)
+	  :QObject(parent), m_value(value)
+      {
+
+      }
+
+      QString DataObject::value() const
+      {
+	  return m_value;
+      }
+
+      void DataObject::setValue(const QString &value)
+      {
+	  if(m_value!=value){
+	      m_value=value;
+	      emit valueChanged();
+	  }
+      }
+
 <<<<<<<<<<<<<<<
 in CommonFiles/Barcode.cpp changue:
 line 11:
