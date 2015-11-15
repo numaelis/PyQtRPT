@@ -1,3 +1,5 @@
+#example2 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
+# to pyside Numael Garay, numaelis@gmail.com
 import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
@@ -13,13 +15,13 @@ for i in range(60):
 for i in range(55):
     table2.append({"value":"DS2: "+ str(i+1)})
 
-@QtCore.Slot(int, "QString", "QObject&", int)
+@QtCore.Slot(int, "QString", "DataObject&", int)
 def setValue(recNo, paramName, paramValue, reportPage):
     if paramName == "value":
         if reportPage == 0:
-            paramValue.setObjectName(str(table1[recNo]["value"]))
+            paramValue.setValue(str(table1[recNo]["value"]))
         else:
-            paramValue.setObjectName(str(table2[recNo]["value"]))
+            paramValue.setValue(str(table2[recNo]["value"]))
     
         
 a = QApplication(sys.argv)
@@ -35,7 +37,7 @@ report.setActivedSignal(True)
 report.recordCount =[len(table1)]
 report.recordCount =[len(table2)]
 
-QObject.connect(report, SIGNAL("setValue(int, QString, QObject&, int)"), #pyside temporary solution
+QObject.connect(report, SIGNAL("setValue(int, QString, DataObject&, int)"), #pyside temporary solution
                 setValue)
                 
 report.printExec()
