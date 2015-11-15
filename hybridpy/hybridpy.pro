@@ -23,6 +23,7 @@ TARGET = ../PyQtRptLib
 SOURCES += \
     PyQtRPT/pyqtrpt_module_wrapper.cpp \
     PyQtRPT/qtrpt_wrapper.cpp \
+    PyQtRPT/dataobject_wrapper.cpp \
     PyQtRPT/rptbandobject_wrapper.cpp \
     PyQtRPT/rptfieldobject_wrapper.cpp \
     PyQtRPT/rptpageobject_wrapper.cpp \
@@ -33,4 +34,6 @@ SOURCES += \
     PyQtRPT/chart_wrapper.cpp \
     PyQtRPT/graphparam_wrapper.cpp \
     PyQtRPT/aggregatevalues_wrapper.cpp
+
+
 
