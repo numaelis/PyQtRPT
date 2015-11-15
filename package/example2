@@ -12,15 +12,6 @@ for i in range(60):
 
 for i in range(55):
     table2.append({"value":"DS2: "+ str(i+1)})
-
-@QtCore.Slot(int, "QString", "QObject&", int)
-def setValue(recNo, paramName, paramValue, reportPage):
-    if paramName == "value":
-        if reportPage == 0:
-            paramValue.setObjectName(str(table1[recNo]["value"]))
-        else:
-            paramValue.setObjectName(str(table2[recNo]["value"]))
-    
         
 a = QApplication(sys.argv)
 form = QDialog()
@@ -30,14 +21,14 @@ report.loadReport("examples/examples_report/example2.xml")
 #bac=QPixmap("examples/examples_report/qt_background_portrait.png")
 #report.setBackgroundImage(bac)
 
-report.setActivedSignal(True) 
+report.setActivedSignal(False) 
+
+report.setTableMap([table1,table2], {})
 
 report.recordCount =[len(table1)]
 report.recordCount =[len(table2)]
-
-QObject.connect(report, SIGNAL("setValue(int, QString, QObject&, int)"), #pyside temporary solution
-                setValue)
                 
 report.printExec()
+
 form.show()
 a.exec_()
