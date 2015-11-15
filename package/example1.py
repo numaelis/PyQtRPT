@@ -40,7 +40,7 @@ bac=QPixmap("examples/examples_report/qt_background_portrait.png")
 report.setBackgroundImage(bac)
 
 report.setActivedSignal(False) #desactive signal setValue and setValueImage
-report.setTableMap(table, mapOne)
+report.setTableMap([table], mapOne)
 report.recordCount =[len(table)]
 
 report.printExec(True)
