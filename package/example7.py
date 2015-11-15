@@ -1,3 +1,5 @@
+#example7 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
+# to pyside Numael Garay, numaelis@gmail.com
 import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
@@ -48,20 +50,20 @@ def setValueDiagram(chart):
         param.caption = "Graph 4"
         chart.setData(param,150)
         
-@QtCore.Slot(int, "QString", "QObject&", int)
+@QtCore.Slot(int, "QString", "DataObject&", int)
 def setValue(recNo, paramName, paramValue, reportPage):
     if paramName == "month":
-        paramValue.setObjectName(table[recNo]["Month"])
+        paramValue.setValue(table[recNo]["Month"])
     if paramName == "eur":
-        paramValue.setObjectName(str(table[recNo]["EUR"]))
+        paramValue.setValue(str(table[recNo]["EUR"]))
     if paramName == "us":
-        paramValue.setObjectName(str(table[recNo]["US"]))
+        paramValue.setValue(str(table[recNo]["US"]))
     if paramName == "ukraine":
-        paramValue.setObjectName(str(table[recNo]["Ukraine"]))
+        paramValue.setValue(str(table[recNo]["Ukraine"]))
     if paramName == "georgia":
-        paramValue.setObjectName(str(table[recNo]["Georgia"]))
+        paramValue.setValue(str(table[recNo]["Georgia"]))
     if paramName == "other":
-        paramValue.setObjectName(str(table[recNo]["Other"]))
+        paramValue.setValue(str(table[recNo]["Other"]))
     
     
 a = QApplication(sys.argv)
@@ -72,7 +74,7 @@ report.setActivedSignal(True)
 
 report.recordCount =[len(table)]
 
-QObject.connect(report, SIGNAL("setValue(int, QString, QObject&, int)"), #pyside temporary solution
+QObject.connect(report, SIGNAL("setValue(int, QString, DataObject&, int)"), #pyside temporary solution
                 setValue)
 
 QObject.connect(report, SIGNAL("setValueDiagram(Chart &)"),
