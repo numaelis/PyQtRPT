@@ -1,3 +1,5 @@
+#example1 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
+# to pyside Numael Garay, numaelis@gmail.com
 import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
@@ -60,22 +62,22 @@ def setValueImage(recNo, paramName, paramValue, reportPage):
     if paramName=="image":
         paramValue.load("examples/pdf.png")
         
-@QtCore.Slot(int, "QString", "QObject&", int)
+@QtCore.Slot(int, "QString", "DataObject&", int)
 def setValue(recNo, paramName, paramValue, reportPage):
     if paramName == "customer":
-        paramValue.setObjectName("I Am")
+        paramValue.setValue("I Am")
     if paramName == "date":
-        paramValue.setObjectName("12/12/12")
+        paramValue.setValue("12/12/12")
     if paramName == "NN":
-        paramValue.setObjectName(str(recNo+1))
+        paramValue.setValue(str(recNo+1))
     if paramName == "Goods":
-        paramValue.setObjectName(str(table[recNo]["Goods"]))
+        paramValue.setValue(str(table[recNo]["Goods"]))
     if paramName == "Quantity":
-        paramValue.setObjectName(str(table[recNo]["Quantity"]))
+        paramValue.setValue(str(table[recNo]["Quantity"]))
     if paramName == "Price":
-        paramValue.setObjectName(str(table[recNo]["Price"]))
+        paramValue.setValue(str(table[recNo]["Price"]))
     if paramName == "Sum":
-        paramValue.setObjectName(str(table[recNo]["Sum"]))
+        paramValue.setValue(str(table[recNo]["Sum"]))
     
 a = QApplication(sys.argv)
 form = QDialog()
@@ -94,7 +96,7 @@ report.recordCount =[len(table)]
 #QObject.connect(report, SIGNAL("setValue(int, QString, QObject&, int)"),
 #                o, SLOT("setValue(int, QString, QObject&, int)"))
 
-QObject.connect(report, SIGNAL("setValue(int, QString, QObject&, int)"), #pyside temporary solution
+QObject.connect(report, SIGNAL("setValue(int, QString, DataObject&, int)"), 
                 setValue)
 
 QObject.connect(report, SIGNAL("setValueImage(int, QString, QImage&, int)"),
