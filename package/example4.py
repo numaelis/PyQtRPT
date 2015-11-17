@@ -34,4 +34,5 @@ report.recordCount =[len(table)]
 
 report.printExec(True)
 form.show()
+
 a.exec_()
