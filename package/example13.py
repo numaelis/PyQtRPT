@@ -99,9 +99,9 @@ report.recordCount =[3]
 QObject.connect(report, SIGNAL("setField(RptFieldObject &)"),
                 setField)
 
-if report.loadReport("examples/examples_report/example13.xml")==False:
+if report.loadReport("examples_report/example13.xml")==False:
     print("Report file not found")
     
-report.printExec(True)
+report.printExec()
 form.show()
 a.exec_()
