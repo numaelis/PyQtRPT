@@ -22,7 +22,7 @@ PyQtRPTDir/
   |-package/
   |	|-example1.py
   |     |-more examples ....
-  |	|-examples/ ---> QtRptDemo/
+  |	|-examples_report/  from---> QtRptDemo/examples/
   |-CommonFiles/
   |-QtRPT/
   |-zint-2.4.4/
