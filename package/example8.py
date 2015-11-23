@@ -1,5 +1,6 @@
-#example7 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
+#example8 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
 # to pyside Numael Garay, numaelis@gmail.com
+#Diagram
 import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
