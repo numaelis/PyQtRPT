@@ -1,4 +1,4 @@
-#example8 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
+#example7 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
 # to pyside Numael Garay, numaelis@gmail.com
 #Diagram
 import sys
