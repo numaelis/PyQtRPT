@@ -83,8 +83,8 @@ a = QApplication(sys.argv)
 form = QDialog()
 report= PyQtRPT.QtRPT()
 
-report.loadReport("examples/examples_report/example1.xml")
-bac=QPixmap("examples/examples_report/qt_background_portrait.png")
+report.loadReport("examples_report/example1.xml")
+bac=QPixmap("examples_report/qt_background_portrait.png")
 report.setBackgroundImage(bac)
 
 report.setActivedSignal(True) 
