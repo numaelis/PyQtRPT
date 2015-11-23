@@ -19,7 +19,7 @@ a = QApplication(sys.argv)
 form = QDialog()
 report= PyQtRPT.QtRPT()
 
-report.loadReport("examples/examples_report/example2.xml")
+report.loadReport("examples_report/example2.xml")
 #bac=QPixmap("examples/examples_report/qt_background_portrait.png")
 #report.setBackgroundImage(bac)
 
