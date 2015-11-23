@@ -81,7 +81,7 @@ QObject.connect(report, SIGNAL("setValue(int, QString, DataObject&, int)"), #pys
 QObject.connect(report, SIGNAL("setValueDiagram(Chart &)"),
                 setValueDiagram)
 
-if report.loadReport("examples/examples_report/example7.xml")==False:
+if report.loadReport("examples_report/example7.xml")==False:
     print("Report file not found")
     
 report.printExec(True)
