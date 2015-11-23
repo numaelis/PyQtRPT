@@ -1,5 +1,8 @@
 #example5 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
 # to pyside Numael Garay, numaelis@gmail.com
+
+# report with mathematics and aggregate functions
+
 import sys
 from PySide.QtCore import *
 from PySide.QtGui import *
@@ -24,7 +27,7 @@ a = QApplication(sys.argv)
 form = QDialog()
 report= PyQtRPT.QtRPT()
 
-report.loadReport("examples/examples_report/example5.xml")
+report.loadReport("examples_report/example5.xml")
 #bac=QPixmap("examples/examples_report/qt_background_portrait.png")
 #report.setBackgroundImage(bac)
 
