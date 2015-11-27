@@ -1,9 +1,9 @@
 
-TARGET = QtRptLib
+TARGET = QtRPT
 TEMPLATE = lib
 include(../QtRPT/QtRPT.pri)
-DEFINES += QTRPTLIB_LIBRARY
-CONFIG += staticlib
+DEFINES += QTRPT_LIBRARY
+#CONFIG += staticlib
 CONFIG += qt
 QT += core gui
 	 
