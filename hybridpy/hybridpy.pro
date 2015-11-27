@@ -15,10 +15,10 @@ INCLUDEPATH +=  /usr/include/python3.4m
 LIBS += /usr/lib/libpython3.4m.so.1.0 \
     /usr/lib/python3.4/site-packages/PySide/libshiboken.cpython-34m.so.1.2 \
     /usr/lib/python3.4/site-packages/PySide/libpyside.cpython-34m.so.1.2 \
-    ../hybrid/libQtRptLib.a \
+    ../hybrid/libQtRPT.so \
     ../hybrid/libQtZint.so
  
-TARGET = ../PyQtRptLib
+TARGET = ../PyQtRPT
  
 SOURCES += \
     PyQtRPT/pyqtrpt_module_wrapper.cpp \
