@@ -8,7 +8,7 @@ download qtRPTProject 1.5.4 and
 	QtRPT
 	zint-2.4.4
    copy in package:
-        QtRptDemo/examples
+        QtRptDemo/examples/examples_report
 	
 final dir:
 PyQtRPTDir/
@@ -141,6 +141,23 @@ result:
         }
         return paramValue;
     }
+
+in QtRPT/qtrpt.cpp:
+comment in "QtRPT::clearObject() {":
+result:
+void QtRPT::clearObject() {
+//    for (int i=0; i<pageList.size(); i++)
+//        delete pageList.at(i);	  // error PySide
+    pageList.clear();
+}
+<<<<<<<<<<<<
+in qtrpt.h add new function public:
+  void addPage(RptPageObject &page); //Solution Pyside for add page, because -> report.pageList.append(page) "No Works"
+in qtrpt.cpp add:
+  void QtRPT::addPage(RptPageObject &page)
+  {
+      pageList.append(&page);
+  }
 <<<<<<<<<<<<
 in qtrpt.h add new class (before the class QtRPT):
     class DataObject : public QObject
@@ -186,7 +203,42 @@ in qtrpt.cpp add:
 	      emit valueChanged();
 	  }
       }
+<<<<<<<<<<<<<<
+in QtRPT/RptBandObject.h:
+replace: void addField(RptFieldObject *field); to void addField(RptFieldObject &field)
+in QtRPT/RptBandObject.cpp:
+replace "RptBandObject::addField(RptFieldObject *field)" to:
+  void RptBandObject::addField(RptFieldObject &field) {
+    field.parentBand = this;
+    fieldList.append(&field);
+}
 
+in QtRPT/RptBandObject.cpp:
+comment: "RptBandObject::~RptBandObject()":
+result:
+RptBandObject::~RptBandObject() {
+//    for (int i=0; i<fieldList.size(); i++)
+//        delete fieldList.at(i);
+    fieldList.clear();
+}
+<<<<<<<<<<<<<<<
+in QtRPT/RptPageObject.h:
+replace: void addBand(RptBandObject *band); to void addBand(RptBandObject &band);
+in QtRPT/RptPageObject.cpp:
+replace "RptPageObject::addBand(RptBandObject *band)" to:
+  void RptPageObject::addBand(RptBandObject &band) {
+      band.parentReportPage = this;
+      bandList.append(&band);
+  }
+
+in QtRPT/RptPageObject.cpp:
+comment: "RptPageObject::~RptPageObject()":
+result:
+RptPageObject::~RptPageObject() {
+//    for (int i=0; i<bandList.size(); i++)
+//        delete bandList.at(i);
+    bandList.clear();
+}
 <<<<<<<<<<<<<<<
 in CommonFiles/Barcode.cpp changue:
 line 11:
@@ -225,11 +277,16 @@ LIBS += /usr/lib/libpython3.4m.so.1.0 \
 
 build:
 sh build.sh
--create 2 lib in package: PyQtRPT.so and libQtZint
-<<<<<<<<<<<<<<<
-install libQtZint in /usr/lib:
-ej: sudo cp -f hybrid/libQtZint.so.1.0.0 /usr/lib/libQtZint.so.1
+-create 3 libs in package: PyQtRPT.so, libQtRPT.so.1 and libQtZint.so.1
 
+<<<<<<<<<<<<<<<
+install libQtRPT and libQtZint:
+permanently:
+    ej: sudo cp -f package/libQtRPT.so.1 /usr/lib/libQtRPT.so.1
+    ej: sudo cp -f package/libQtZint.so.1 /usr/lib/libQtZint.so.1
+temporary:
+    ej: cd package/
+        export LD_LIBRARY_PATH=.
 <<<<<<<<<<<<<<<<
 example:
 python3 example1.py
