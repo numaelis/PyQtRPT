@@ -32,7 +32,7 @@ you must use your project is also under this license or disable the use of the Z
 
 """"""
 
-Python-QtRPT
+Python-QtRPT:
 
 numaelis@gmail.com
 
