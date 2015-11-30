@@ -32,7 +32,7 @@ rm -rf libPyQtRPT.so.1.0
 rm -rf libPyQtRPT.so.1
 rm -rf libPyQtRPT.so
 
-cp -f hybrid/libQtRPT.so.1.0.0 package/libQtRPT.so.1
+cp -f hybrid/libQtRPTaps.so.1.0.0 package/libQtRPTaps.so.1
 cp -f hybrid/libQtZint.so.1.0.0 package/libQtZint.so.1
 
 cd package/
