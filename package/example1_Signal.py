@@ -96,7 +96,7 @@ report.recordCount =[len(table)]
 #QObject.connect(report, SIGNAL("setValue(int, QString, QObject&, int)"),
 #                o, SLOT("setValue(int, QString, QObject&, int)"))
 
-QObject.connect(report, SIGNAL("setValue(int, QString, DataObject&, int)"), 
+QObject.connect(report, SIGNAL("setValue(int, QString, DataObject&, int)"), #pyside temporary solution
                 setValue)
 
 QObject.connect(report, SIGNAL("setValueImage(int, QString, QImage&, int)"),

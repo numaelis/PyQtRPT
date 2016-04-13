@@ -1,8 +1,5 @@
 #example5 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
 # to pyside Numael Garay, numaelis@gmail.com
-
-# report with mathematics and aggregate functions
-
 import sys
 from PySide.QtCore import *
 from PySide.QtGui import *

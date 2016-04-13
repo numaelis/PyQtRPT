@@ -102,6 +102,6 @@ QObject.connect(report, SIGNAL("setField(RptFieldObject &)"),
 if report.loadReport("examples_report/example13.xml")==False:
     print("Report file not found")
     
-report.printExec()
+report.printExec(True)
 form.show()
 a.exec_()

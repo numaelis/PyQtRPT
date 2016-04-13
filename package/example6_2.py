@@ -1,7 +1,7 @@
-#example6 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
+#example6_2 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
 # to pyside Numael Garay, numaelis@gmail.com
 
-#Report with grouping data Master Data Band 1
+#Report with grouping data Master Data Band 2
 
 import sys
 from PySide.QtCore import *
@@ -46,7 +46,7 @@ a = QApplication(sys.argv)
 form = QDialog()
 report= PyQtRPT.QtRPT()
 
-report.loadReport("examples_report/example6a.xml")
+report.loadReport("examples_report/example6b.xml")
 #bac=QPixmap("examples/examples_report/qt_background_portrait.png")
 #report.setBackgroundImage(bac)
 
@@ -54,6 +54,6 @@ report.setActivedSignal(False) #desactive signal setValue and setValueImage
 report.setTableMap([table], {})
 report.recordCount =[len(table)]
 
-report.printExec(True)
+report.printExec()
 form.show()
 a.exec_()

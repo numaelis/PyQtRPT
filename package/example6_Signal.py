@@ -89,6 +89,6 @@ QObject.connect(report, SIGNAL("setValue(int, QString, DataObject&, int)"), #pys
                 setValue)
 
 
-report.printExec(True)
+report.printExec()
 form.show()
 a.exec_()
