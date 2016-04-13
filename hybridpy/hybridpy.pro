@@ -5,16 +5,16 @@ INCLUDEPATH += hybrid
 INCLUDEPATH += ../hybrid
 include(../QtRPT/QtRPT.pri)
 
-INCLUDEPATH +=  /usr/lib/python3.4/site-packages/PySide/include/PySide
-INCLUDEPATH +=  /usr/lib/python3.4/site-packages/PySide/include/PySide/QtCore
-INCLUDEPATH +=  /usr/lib/python3.4/site-packages/PySide/include/PySide/QtGui
-INCLUDEPATH +=  /usr/lib/python3.4/site-packages/PySide/include/shiboken
+INCLUDEPATH +=  /usr/lib64/python3.4/site-packages/PySide/include/PySide
+INCLUDEPATH +=  /usr/lib64/python3.4/site-packages/PySide/include/PySide/QtCore
+INCLUDEPATH +=  /usr/lib64/python3.4/site-packages/PySide/include/PySide/QtGui
+INCLUDEPATH +=  /usr/lib64/python3.4/site-packages/PySide/include/shiboken
 INCLUDEPATH +=  /usr/include/python3.4m
 	
 
-LIBS += /usr/lib/libpython3.4m.so.1.0 \
-    /usr/lib/python3.4/site-packages/PySide/libshiboken.cpython-34m.so.1.2 \
-    /usr/lib/python3.4/site-packages/PySide/libpyside.cpython-34m.so.1.2 \
+LIBS += /usr/lib64/libpython3.4m.so.1.0 \
+    /usr/lib64/python3.4/site-packages/PySide/libshiboken.cpython-34m.so.1.2 \
+    /usr/lib64/python3.4/site-packages/PySide/libpyside.cpython-34m.so.1.2 \
     ../hybrid/libQtRPTaps.so \ # adaptation pyside
     ../hybrid/libQtZint.so
  
@@ -33,7 +33,9 @@ SOURCES += \
     PyQtRPT/barcode_wrapper.cpp \
     PyQtRPT/chart_wrapper.cpp \
     PyQtRPT/graphparam_wrapper.cpp \
-    PyQtRPT/aggregatevalues_wrapper.cpp
+    PyQtRPT/aggregatevalues_wrapper.cpp\
+    PyQtRPT/rpttabelement_wrapper.cpp \
+    PyQtRPT/rptcrosstabobject_wrapper.cpp
 
 
 
