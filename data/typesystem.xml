@@ -20,6 +20,14 @@
     <function signature="double2MoneyRUS(double, int)"/>
     <function signature="double2MoneyGER(double, bool)"/>
     <function signature="double2MoneyENG(double)"/>
+    
+    <function signature="double2MoneyESP_Group(int, QString*, int)"/>
+    <function signature="double2MoneyESP(double, int)"/>
+    <function signature="double2MoneyFrench(int, int)"/>
+    <function signature="double2MoneyFrenchBE(double, bool)"/>
+    <function signature="double2MoneyFrenchFR(double, bool)"/>
+    <function signature="double2MoneyFrenchCH(double, bool)"/>
+
     <function signature="double2Money(double, QString)"/>
     <function signature="colorToString(QColor)"/>
     <function signature="colorFromString(QString)"/>
@@ -48,10 +56,12 @@
              <include file-name="QSize" location="global"/>
         </extra-includes>
     </object-type>
-    <value-type name="RptSqlConnection"/>
+    <value-type name="RptPageObject"/>
     <value-type name="RptFieldObject"/>
     <value-type name="RptBandObject"/>
-    <value-type name="RptPageObject"/>
+    <value-type name="RptSqlConnection"/>
+    <value-type name="RptTabElement"/>
+    <value-type name="RptCrossTabObject"/>
 </typesystem>
 
 

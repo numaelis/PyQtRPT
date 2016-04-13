@@ -19,5 +19,5 @@
 #include "../CommonFiles/CommonClasses.h"
 #include "../CommonFiles/Barcode.h"
 
-#include "../zint-2.4.4/backend_qt4/qzint.h"
-#include "../zint-2.4.4/backend_qt4/qzint_global.h"
+#include "../3rdparty/zint-2.4.4/backend_qt4/qzint.h"
+#include "../3rdparty/zint-2.4.4/backend_qt4/qzint_global.h"
