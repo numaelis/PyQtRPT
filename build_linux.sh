@@ -1,18 +1,21 @@
+
 #!/bin/sh
-cd hybrid/
+
+cd 3rdparty/zint-2.4.4/backend_qt4/
 qmake
 make clean
 make
 
-cd ../zint-2.4.4/backend_qt4/
+cd ../../../hybrid/
 qmake
 make clean
 make
-cd ../../hybridpy
 
-QTGUI_INC=/usr/lib/qt4/include/QtGui
-QTCORE_INC=/usr/lib/qt4/include/QtCore
-QTTYPESYSTEM=/usr/lib/python3.4/site-packages/PySide/typesystems
+cd ../hybridpy
+
+QTGUI_INC=/usr/lib64/qt4/include/QtGui
+QTCORE_INC=/usr/lib64/qt4/include/QtCore
+QTTYPESYSTEM=/usr/lib64/python3.4/site-packages/PySide/typesystems
 
 
 shiboken ../data/global.h \
@@ -33,7 +36,7 @@ rm -rf libPyQtRPT.so.1
 rm -rf libPyQtRPT.so
 
 cp -f hybrid/libQtRPTaps.so.1.0.0 package/libQtRPTaps.so.1
-cp -f hybrid/libQtZint.so.1.0.0 package/libQtZint.so.1
+cp -f hybrid/libQtZint.so package/libQtZint.so.1
 
 cd package/
 
