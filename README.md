@@ -1,13 +1,15 @@
-PyQtRPT
+#PyQtRPT
 
-PySide QtRPT
+#PySide QtRPT
 
-Binding
+Binding Shiboken
 
-Python PySide Shiboken QtRPT
 License(GPL) compatible with QtRPT, zint
+
 or
+
 LGPL only QtRPT.
+
 
 
 """"""
@@ -27,4 +29,6 @@ Please note that QtRPT to generate bar code uses the Zint library, which is dist
 you must use your project is also under this license or disable the use of the Zint library.
 """"""
 
-numaelis@gmail.com
+
+
+https://sourceforge.net/projects/pyqtrpt/files/
