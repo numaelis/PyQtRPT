@@ -1,11 +1,12 @@
 #example13 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
-# to pyside Numael Garay, numaelis@gmail.com
+# to pyside2 Numael Garay, mantrixsoft@gmail.com
 import sys
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide import QtCore
-import PyQtRPT
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from PySide2 import QtCore
 
+from PyQtRPT import PyQtRPT
 
 @QtCore.Slot("RptFieldObject&")
 def setField(fieldObject):
@@ -91,16 +92,14 @@ def setField(fieldObject):
 a = QApplication(sys.argv)
 form = QDialog()
 report= PyQtRPT.QtRPT()
-
+if report.loadReport("examples_report/example13.xml")==False:
+    print("Report file not found")
 report.setActivedSignal(True) 
-
-report.recordCount =[3]
 
 QObject.connect(report, SIGNAL("setField(RptFieldObject &)"),
                 setField)
 
-if report.loadReport("examples_report/example13.xml")==False:
-    print("Report file not found")
+report.recordCount =[3]
     
 report.printExec(True)
 form.show()

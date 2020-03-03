@@ -2,66 +2,53 @@
 <typesystem package="PyQtRPT">
     <load-typesystem name="typesystem_core.xml" generate="no"/>
     <load-typesystem name="typesystem_gui.xml" generate="no"/>
+    <load-typesystem name="typesystem_widgets.xml" generate="no" />
+    <load-typesystem name="typesystem_printsupport.xml" generate="no"/>
     <namespace-type name="QtRptName">
         <enum-type name="BandType"/>
         <enum-type name="FieldType"/>
-	<enum-type name="BorderStyle"/>
-	<enum-type name="Command"/>
+        <enum-type name="BorderStyle"/>
+        <enum-type name="Command"/>
     </namespace-type>
-    <object-type name="BarCode">
-        <enum-type name="BarcodeTypes"/>
-        <enum-type name="FrameTypes"/>
-        <extra-includes>
-             <include file-name="QStringList" location="global"/>
-             <include file-name="QSize" location="global"/>
-        </extra-includes>
-    </object-type>
     <function signature="double2MoneyUKR(double, int)"/>
     <function signature="double2MoneyRUS(double, int)"/>
     <function signature="double2MoneyGER(double, bool)"/>
     <function signature="double2MoneyENG(double)"/>
-    
-    <function signature="double2MoneyESP_Group(int, QString*, int)"/>
     <function signature="double2MoneyESP(double, int)"/>
     <function signature="double2MoneyFrench(int, int)"/>
     <function signature="double2MoneyFrenchBE(double, bool)"/>
     <function signature="double2MoneyFrenchFR(double, bool)"/>
     <function signature="double2MoneyFrenchCH(double, bool)"/>
-
+    <function signature="double2MoneyITA(double)"/>
     <function signature="double2Money(double, QString)"/>
     <function signature="colorToString(QColor)"/>
     <function signature="colorFromString(QString)"/>
     <function signature="eventType(QEvent*)"/>
+
+    <object-type name="BarCode">
+        <enum-type name="BarcodeTypes"/>
+        <enum-type name="FrameTypes"/>
+    </object-type>
+
     <enum-type name="ChartParam"/>
     <value-type name="GraphParam"/>
-    <object-type name="Chart">
-        <extra-includes>
-             <include file-name="QStringList" location="global"/>
-             <include file-name="QSize" location="global"/>
-        </extra-includes>
-    </object-type>
+    <object-type name="Chart"/>
     <object-type name="DataObject"/>
+    
     <enum-type name="HiType"/>
     <value-type name="AggregateValues"/>
+    
     <object-type name="QtRPT">
-	<enum-type name="PrintMode"/>
-        <extra-includes>
-             <include file-name="QStringList" location="global"/>
-             <include file-name="QSize" location="global"/>
-        </extra-includes>
+        <enum-type name="PrintMode"/>
     </object-type>
-    <object-type name="RptSql">
-        <extra-includes>
-             <include file-name="QStringList" location="global"/>
-             <include file-name="QSize" location="global"/>
-        </extra-includes>
-    </object-type>
-    <value-type name="RptPageObject"/>
-    <value-type name="RptFieldObject"/>
-    <value-type name="RptBandObject"/>
+    <object-type name="RptSql"/>
+    <object-type name="RptPageObject"/>
+    <object-type name="RptFieldObject"/>
+    <object-type name="RptBandObject"/>
     <value-type name="RptSqlConnection"/>
     <value-type name="RptTabElement"/>
-    <value-type name="RptCrossTabObject"/>
+    <object-type name="RptCrossTabObject"/>
+
 </typesystem>
 
 

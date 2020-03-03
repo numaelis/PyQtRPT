@@ -1,10 +1,12 @@
 #example1 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
-# to pyside Numael Garay, numaelis@gmail.com
-import sys
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide import QtCore
-import PyQtRPT
+# to pyside2 Numael Garay, mantrixsoft@gmail.com
+import sys,os
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from PySide2 import QtCore
+
+from PyQtRPT import PyQtRPT
 
 
 table=[
@@ -26,15 +28,14 @@ table=[
   ]
 mapOne={
         "customer":"jean",
-        "date":"30/12/15",
-        "image":"examples/pdf.png"
+        "date":"30/12/18",
+        "image":"examples_report/picture.png"
         }
-
 
 a = QApplication(sys.argv)
 form = QDialog()
 report= PyQtRPT.QtRPT()
-
+ 
 report.loadReport("examples_report/example1.xml")
 bac=QPixmap("examples_report/qt_background_portrait.png")
 report.setBackgroundImage(bac)
@@ -43,6 +44,15 @@ report.setActivedSignal(False) #desactive signal setValue and setValueImage
 report.setTableMap([table], mapOne)
 report.recordCount =[len(table)]
 
+
 report.printExec(True)
+
+
+#more options:
+    #printExec(bool maximum = false, bool direct = false, QString printerName = QString()); -> report.printExec(True,True,"HP-Deskjet-D1400-series")
+    #printPDF(const QString &filePath, bool open = true); -> report.printPDF("example1.pdf",False) or report.printPDF(os.getcwd()+QDir.separator()+"example1.pdf",True)
+    #printHTML(const QString &filePath, bool open = true);
+    #printXLSX(const QString &filePath, bool open = true);
+    
 form.show()
 a.exec_()

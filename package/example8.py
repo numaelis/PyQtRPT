@@ -1,13 +1,15 @@
 #example8 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
-# to pyside Numael Garay, numaelis@gmail.com
+# to pyside2 Numael Garay, mantrixsoft@gmail.com
+import sys
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from PySide2 import QtCore
+
+from PyQtRPT import PyQtRPT
 
 #Report with Autoheight
 
-import sys
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide import QtCore
-import PyQtRPT
 
 table=[
     { "No" : 1, "Text" : "Qt Framework and tools can be installed using an online installer, offline installers, "

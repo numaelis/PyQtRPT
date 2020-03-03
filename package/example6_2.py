@@ -1,14 +1,12 @@
 #example6_2 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
-# to pyside Numael Garay, numaelis@gmail.com
-
-#Report with grouping data Master Data Band 2
-
+# to pyside2 Numael Garay, mantrixsoft@gmail.com
 import sys
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide import QtCore
-import PyQtRPT
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from PySide2 import QtCore
 
+from PyQtRPT import PyQtRPT
 
 table=[
 {"Market":"US", "Goods":"Goods 0", "Quantity":0, "Price":0,"Sum":0},

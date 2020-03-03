@@ -4,10 +4,12 @@
 #Report with grouping data Master Data Band 1
 
 import sys
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide import QtCore
-import PyQtRPT
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from PySide2 import QtCore
+
+from PyQtRPT import PyQtRPT
 
 
 table=[

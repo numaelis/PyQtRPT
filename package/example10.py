@@ -1,14 +1,14 @@
 #example10 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
-# to pyside Numael Garay, numaelis@gmail.com
+# to pyside2 Numael Garay, mantrixsoft@gmail.com
+import sys
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from PySide2 import QtCore
+
+from PyQtRPT import PyQtRPT
 
 #Report with SQL query to SQLITE DB
-
-import sys
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide import QtCore
-import PyQtRPT
-
 
 a = QApplication(sys.argv)
 form = QDialog()

@@ -1,12 +1,12 @@
 #example7 QtRPT, Aleksey Osipov, E-mail: aliks-os@ukr.net
-# to pyside Numael Garay, numaelis@gmail.com
+# to pyside2 Numael Garay, mantrixsoft@gmail.com
 import sys
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide import QtCore
-import PyQtRPT
-from PyQtRPT import *
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from PySide2 import QtCore
 
+from PyQtRPT import PyQtRPT
 
 table=[
         {"Month":"January","EUR":1222,"US":124,"Ukraine":1112,"Georgia":1256,"Other":1552},
